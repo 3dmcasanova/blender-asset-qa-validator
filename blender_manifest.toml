@@ -1,0 +1,44 @@
+# =============================================================================
+#  Manifiesto de la extensión (Blender 4.2 o superior)
+# =============================================================================
+#  Reemplaza al antiguo diccionario bl_info. Blender lo lee para mostrar la
+#  extensión en Edit > Preferences > Add-ons y para saber si es compatible.
+#  Formato TOML: clave = valor; las listas van entre [corchetes].
+# =============================================================================
+
+schema_version = "1.0.0"
+
+# Identificador único. Blender instala la extensión en una carpeta con este
+# nombre, así que solo puede tener letras, números y guiones bajos.
+id = "asset_qa_validator"
+version = "1.0.0"
+name = "Asset QA Validator"
+tagline = "Validate 3D assets against technical specs before export"
+maintainer = "David Morales <david.morales.dmqa@gmail.com>"
+type = "add-on"
+website = "https://github.com/3dmcasanova/blender-asset-qa-validator"
+
+# Categorías en las que aparece la extensión.
+tags = ["3D View", "Mesh"]
+
+# Versión mínima de Blender. 4.2 es la primera con sistema de extensiones.
+blender_version_min = "4.2.0"
+
+# Las extensiones de Blender deben usar una licencia compatible con GPL.
+license = ["SPDX:GPL-3.0-or-later"]
+
+# Las extensiones declaran qué permisos necesitan. Esta escribe archivos
+# (el reporte CSV), así que lo dice aquí y Blender lo muestra al instalarla.
+[permissions]
+files = "Export QA reports to CSV"
+
+# Al empaquetar (blender --command extension build), no incluir los tests ni
+# los archivos temporales de Python en el .zip que se instala.
+[build]
+paths_exclude_pattern = [
+  "__pycache__/",
+  "/tests/",
+  "/dist/",
+  "/.git/",
+  "/.gitignore",
+]
